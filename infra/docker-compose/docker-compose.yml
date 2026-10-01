@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  # MQTT-брокер для локальной разработки
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: greenhouse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"   # MQTT
+      - "9001:9001"   # MQTT over WebSockets
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto-data:/mosquitto/data
+
+  # Позже: добавь сюда InfluxDB
+  # influxdb:
+  #   image: influxdb:2
+  #   ports:
+  #     - "8086:8086"
+  #   volumes:
+  #     - influxdb-data:/var/lib/influxdb2
+
+  # Позже: добавь сюда Grafana
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - grafana-data:/var/lib/grafana
+
+volumes:
+  mosquitto-data:
+  # influxdb-data:
+  # grafana-data:

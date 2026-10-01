@@ -1,0 +1,21 @@
+# Arduino / ESP32
+build/
+*.elf
+*.bin
+*.hex
+*.map
+
+# Docker
+data/
+*.log
+
+# Secrets
+*.env
+secrets.yaml
+kubeconfig
+*.key
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
